@@ -22,6 +22,14 @@ router.get('/', function(req, res, next) {
       });
 });
 
+router.post('/', function(req, res, next) {
+  queries.addNote(req.body).then(function(note) {
+    res.json(note);
+  }).catch(function(error) {
+    next(error);
+  });
+});
+
 router.get('/:id', function(req, res, next) {
   queries.getOneNote(req.params.id).then(function(data) {
     res.json({ data: data });

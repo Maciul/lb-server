@@ -11,5 +11,8 @@ module.exports = {
   },
   searchNote: function(query) {
     return knex('notes').select().where('body', 'like', '%'+query+'%');
+  },
+  addNote: function(note) {
+    return knex('notes').insert(note).returning('*');
   }
 };
