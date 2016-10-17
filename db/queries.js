@@ -8,5 +8,8 @@ module.exports = {
   },
   getOneNote: function(id) {
     return knex('notes').select().where({id: id});
+  },
+  searchNote: function(query) {
+    return knex('notes').select().where('body', 'like', '%'+query+'%');
   }
 };
